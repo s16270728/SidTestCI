@@ -8,7 +8,7 @@ import { delay } from 'rxjs/operators';
 export class ValueService {
 
   constructor() { }
-  protected value = 'real error value';
+  protected value = 'real value';
 
   getValue() { return this.value; }
   setValue(value: string) { this.value = value; }
