@@ -1,0 +1,36 @@
+import { TestBed } from '@angular/core/testing';
+
+import { ValueService } from './value.service';
+
+describe('ValueService', () => {
+  let service: ValueService;
+  beforeEach(() => {
+    TestBed.configureTestingModule({ providers: [ValueService] });
+    service = TestBed.get(ValueService);
+  });
+
+  it('should be created', () => {
+    //const service: ValueService = TestBed.get(ValueService);
+    expect(service).toBeTruthy();
+  });
+
+  it('#getValue should return real value', () => {
+    expect(service.getValue()).toBe('real value');
+  });
+
+  it('#getObservableValue should return value from observable',
+    (done: DoneFn) => {
+      service.getObservableValue().subscribe(value => {
+        expect(value).toBe('observable value');
+        done();
+      });
+    });
+
+  it('#getPromiseValue should return value from a promise',
+    (done: DoneFn) => {
+      service.getPromiseValue().then(value => {
+        expect(value).toBe('promise value');
+        done();
+      });
+    });
+});
